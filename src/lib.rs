@@ -227,7 +227,7 @@ pub struct YoutubeDl {
     extract_audio: bool,
     #[cfg(feature = "yt-dlp")]
     download: bool,
-		playlist_items: Option<String>,
+    playlist_items: Option<String>,
     extra_args: Vec<String>,
 }
 
@@ -249,7 +249,7 @@ impl YoutubeDl {
             extract_audio: false,
             #[cfg(feature = "yt-dlp")]
             download: false,
-            #[cfg(feature = "yt-dlp")]
+            // #[cfg(feature = "yt-dlp")]
             playlist_items: None,
             extra_args: Vec::new(),
         }
@@ -326,7 +326,7 @@ impl YoutubeDl {
         self.extract_audio = extract_audio;
         self
     }
-  
+
     #[cfg(feature = "yt-dlp")]
     /// Specify whether to download videos, instead of just listing them.
     ///
@@ -336,11 +336,11 @@ impl YoutubeDl {
         self
     }
 
-		/// Set the `--playlist-items` command line flag.
-		pub fn playlist_items(&mut self, index: u32) -> &mut Self {
-			self.playlist_items = Some(index.to_string());
-			self
-		}
+    /// Set the `--playlist-items` command line flag.
+    pub fn playlist_items(&mut self, index: u32) -> &mut Self {
+        self.playlist_items = Some(index.to_string());
+        self
+    }
 
 
     /// Add an additional custom CLI argument.
@@ -442,8 +442,8 @@ impl YoutubeDl {
             .stderr(Stdio::piped())
             .args(process_args)
             .spawn()?;
-				let mut x = Command::new(path);
-				x.args(self.process_args());
+        let mut x = Command::new(path);
+        x.args(self.process_args());
 
         // Continually read from stdout so that it does not fill up with large output and hang forever.
         // We don't need to do this for stderr since only stdout has potentially giant JSON.
@@ -651,7 +651,7 @@ mod tests {
     #[test]
     #[cfg(feature = "yt-dlp")]
     fn test_with_yt_dlp_download() {
-        let output = YoutubeDl::new("https://www.youtube.com/watch?v=7XGyWcuYVrg")
+        let output = YoutubeDl::new("https://www.youtube.com/watch?v=zUJiT9Agb1U")
             .youtube_dl_path("yt-dlp")
             .download(true)
             .run()

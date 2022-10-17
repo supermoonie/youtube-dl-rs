@@ -11,7 +11,7 @@ categories = ["multimedia::video"]
 keywords = ["youtube-dl", "youtube"]
 
 [features]
-default = ["youtube-dl"]
+default = ["yt-dlp"]
 youtube-dl = []
 yt-dlp = []
 
