@@ -342,7 +342,6 @@ impl YoutubeDl {
         self
     }
 
-
     /// Add an additional custom CLI argument.
     ///
     /// This allows specifying arguments that are not covered by other
@@ -424,6 +423,7 @@ impl YoutubeDl {
 
         args.push(&self.url);
         log::debug!("youtube-dl arguments: {:?}", args);
+        println!("youtube-dl arguments: {:?}", args);
 
         args
     }
